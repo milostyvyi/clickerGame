@@ -175,6 +175,14 @@ function makeTaskList(name) {
         15, // GPU
         20, // time
     ];
+    
+    let task7 = [
+    0,
+    0,
+    0,
+    0,
+    999,
+]
     switch (name) {
         case 1:
             return task1;
@@ -194,6 +202,9 @@ function makeTaskList(name) {
             case 6:
             return task6;
             break;
+            case 7:
+                return task7;
+                break;
         default:
     }
 }
@@ -287,6 +298,9 @@ function makeList(name) {
         1,
     
     ];
+    let map7 = [
+        "WIN",
+    ];
 
     if (name == 1) {
         return map1;
@@ -306,6 +320,9 @@ function makeList(name) {
     }
     if (name == 6) {
         return map6;
+    }
+    if (name == 7) {
+        return map7;
     }
 
     // switch(name){
@@ -517,8 +534,6 @@ function addCountEvent(imageType, scoreType, taskType, task) {
 
 
 function checkResult() {
-   
-
     if ((document.getElementById("taskGold").innerText == "FULL") && (document.getElementById("taskStone").innerText == "FULL") && (document.getElementById("taskBomb").innerText == "FULL") && (document.getElementById("taskWood").innerText == "FULL")) {
         if (confirm("Перейти на наступний рівень")) {
             currentLevel++;
@@ -531,5 +546,15 @@ function checkResult() {
             document.getElementById("scoreWood").innerHTML = 0;
             document.getElementById("scoreBomb").innerHTML = 0;
         }
+        
+    }
+    if (currentLevel == 7) {
+        clearInterval(timerId);
+        if (confirm("Вітаю з перемогою! Бажаєте зіграти ще раз?")) {
+            location.reload();
+        } else {
+
+        }
+
     }
 }
